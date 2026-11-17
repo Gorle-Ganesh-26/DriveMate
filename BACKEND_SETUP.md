@@ -1,9 +1,11 @@
 # DriveMate · Bengaluru backend foundation
 
-Status: migration prepared, not connected or deployed to a database. The hosted
-website remains an explicitly labelled browser-local demo. No documents should
-be collected through the demo. The SQL is intended for a new Supabase staging
-project; do not run it against an existing production database without review.
+Status (18 November 2026): foundation and account migrations applied to Supabase
+project wgzvbkujdgwpjdnddjgw. The separate account area uses Supabase email-link
+authentication, profiles, driver applications, private sample-document uploads,
+and an admin-gated review queue. The landing-page booking form remains a demo.
+Live booking and payment writes remain disabled. See ACCOUNT_STATUS.md for the
+tested scope and remaining activation steps. Do not rerun the applied migrations.
 
 Launch scope: Bengaluru, Karnataka, India; INR; Asia/Kolkata. Scheduled hourly
 drivers first. A city selection does not validate an address: an explicit service
@@ -77,10 +79,12 @@ and rate-limit the operation before using it. Keep local .env files untracked.
 
 ## Validation record
 
-The environment has Node.js but no local PostgreSQL/Supabase instance configured.
-This migration has not been executed or tested against live Supabase. Access-rule
-and concurrency testing are required in staging; syntax review alone is not a
-security or launch approval.
+Both SQL migrations were executed successfully through the authenticated Supabase
+SQL Editor. supabase/tests/accounts_access.sql passed on the project using
+transaction-scoped synthetic identities; all test fixtures were rolled back.
+Browser account registration/sign-in screens were checked at desktop and mobile
+sizes. Human email delivery and end-to-end login remain to be tested by the owner.
+Booking concurrency is not implemented or tested; live bookings remain disabled.
 
 References:
 - https://supabase.com/docs/guides/database/postgres/row-level-security
